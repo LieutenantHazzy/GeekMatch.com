@@ -24,7 +24,6 @@ return new class extends Migration
             $table->string('last_name');
             $table->date('dob');
             $table->integer('gender')->nullable();
-            $table->integer('orientation')->nullable();
             $table->integer('phone')->nullable();
             $table->string('street_nr')->nullable();
             $table->string('city')->nullable();
