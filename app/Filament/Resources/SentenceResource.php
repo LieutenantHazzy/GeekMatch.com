@@ -18,7 +18,7 @@ class SentenceResource extends Resource
     protected static ?string $model = Sentence::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-bottom-center-text';
-    protected static ?string $navigationGroup = 'Sentence';
+    protected static ?string $navigationGroup = 'Enterprise';
     protected static ?string $navigationLabel = 'Sentence';
     protected static ?string $label = 'Sentence';
     protected static ?string $pluralLabel = 'Sentence';

@@ -19,7 +19,7 @@ class HomepageLineResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-cube';
     protected static ?string $navigationGroup = 'Content';
-    protected static ?string $navigationLabel = 'lines';
+    protected static ?string $navigationLabel = 'Lines';
     protected static ?string $label = 'Lines';
     protected static ?string $pluralLabel = 'Lines';
     protected static ?int $navigationSort = 1;
