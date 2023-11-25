@@ -23,16 +23,19 @@
 </style>
 
 <body style="font-family: Open Sans, sans-serif">
+    @props(['logo'])
+
 <section class="px-6 py-8">
     <nav class="md:flex md:justify-between md:items-center">
         <div>
             <a href="/">
-                <img src="/images/logo.png" alt="Laracasts Logo" width="165" height="16">
+                <img src="{{ asset("storage/$logo->logo")  }}" alt="Logo" width="65px" height="auto">
             </a>
         </div>
 
         <div class="mt-8 md:mt-0 flex items-center">
             @auth
+
                 <x-dropdown>
                     <x-slot name="trigger">
                         <button class="text-xs font-bold uppercase">
@@ -40,28 +43,7 @@
                         </button>
                     </x-slot>
 
-                    @admin
-                    <x-dropdown-item
-                        href="/admin/posts"
-                        :active="request()->is('admin/posts')"
-                    >
-                        Dashboard
-                    </x-dropdown-item>
 
-                    <x-dropdown-item
-                        href="/admin/posts/create"
-                        :active="request()->is('admin/posts/create')"
-                    >
-                        New Post
-                    </x-dropdown-item>
-
-                    <x-dropdown-item
-                        href="/admin/category/create"
-                        :active="request()->is('admin/category/create')"
-                    >
-                        New Category
-                    </x-dropdown-item>
-                    @endadmin
 
                     <x-dropdown-item
                         href="#"

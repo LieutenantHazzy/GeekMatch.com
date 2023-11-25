@@ -17,6 +17,6 @@
         </style>
     </head>
     <body class="antialiased">
-       <x-layout></x-layout>
+       <x-layout :logo="$logo" ></x-layout>
     </body>
 </html>

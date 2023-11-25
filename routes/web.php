@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Logo;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SessionController;
 
@@ -16,7 +17,9 @@ use App\Http\Controllers\SessionController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $logo = Logo::where('active', 1)->first(); // Assuming 'active' is a boolean field
+//dd($logo);
+    return view('welcome')->with('logo', $logo);
 });
 
 Route::get('login', [SessionController::class, 'index'])->middleware('guest');

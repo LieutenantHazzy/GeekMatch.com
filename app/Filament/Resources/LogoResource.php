@@ -32,12 +32,14 @@ class LogoResource extends Resource
         return $form
             ->schema([
                 FileUpload::make('logo')
-                    ->directory('site-logo'),
+                    ->directory('site-logo')
+                    ->required(),
                 Radio::make('active')
                     ->options([
                         '1' => 'Active',
                         '0' => 'Invisible',
-                    ]),
+                    ])
+                    ->required(),
             ]);
     }
 
@@ -46,6 +48,7 @@ class LogoResource extends Resource
         return $table
             ->columns([
                 ImageColumn::make('logo')
+                    ->disk('public')
                     ->square(),
                 Tables\Columns\IconColumn::make('active')
                     ->searchable(),
