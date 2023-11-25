@@ -8,26 +8,22 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('sentences', function (Blueprint $table) {
+        Schema::create('homepage_lines', function (Blueprint $table) {
             $table->id();
-            $table->string('content');
-            $table->softDeletes();
+            $table->text('content');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('sentences');
+        Schema::dropIfExists('homepage_lines');
     }
 };

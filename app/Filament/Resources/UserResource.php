@@ -27,10 +27,9 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('images_id')
-                    ->numeric(),
-                Forms\Components\TextInput::make('qr_id')
-                    ->numeric(),
+                Forms\Components\TextInput::make('name')
+                    ->required()
+                    ->maxLength(255),
                 Forms\Components\TextInput::make('one_time')
                     ->required()
                     ->maxLength(255),
@@ -38,46 +37,12 @@ class UserResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('name')
-                    ->maxLength(255),
                 Forms\Components\TextInput::make('password')
+                    ->required()
                     ->password()
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('first_name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('infix')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('last_name')
-                    ->required()
                     ->maxLength(255),
                 Forms\Components\DatePicker::make('dob')
                     ->required(),
-                Forms\Components\TextInput::make('gender')
-                    ->numeric(),
-                Forms\Components\TextInput::make('phone')
-                    ->tel()
-                    ->numeric(),
-                Forms\Components\TextInput::make('street_nr')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('city')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('zipcode')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('address')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('country')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('description')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('is_enterprise')
-                    ->numeric(),
-                Forms\Components\Toggle::make('is_admin')
-                    ->required(),
-                Forms\Components\DateTimePicker::make('email_verified_at'),
             ]);
     }
 
@@ -92,17 +57,16 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('dob')
                     ->date()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('gender')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('is_enterprise')
-                    ->numeric()
+                Tables\Columns\IconColumn::make('is_enterprise')
+                    ->boolean()
                     ->sortable(),
                 Tables\Columns\IconColumn::make('is_admin')
-                    ->boolean(),
+                    ->boolean()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('deleted_at')
                     ->dateTime()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -111,19 +75,24 @@ class UserResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-            ])
+                ])
             ->filters([
-                //
+//                Tables\Filters\TrashedFilter::make(),
             ])
+            ->reorderable('order')
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->button(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\ForceDeleteBulkAction::make(),
+                    Tables\Actions\RestoreBulkAction::make(),
                 ]),
             ])
-            ->emptyStateActions([
+        ->emptyStateActions([
                 Tables\Actions\CreateAction::make(),
             ]);
     }
