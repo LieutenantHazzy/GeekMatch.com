@@ -17,6 +17,13 @@
         </style>
     </head>
     <body class="antialiased">
-       <x-layout :logo="$logo" ></x-layout>
+    <x-layout></x-layout>
+        <div class="pt-6 font-momo text-center" >
+            <h1>
+                <b>
+                    {{ $line->content}}
+                </b>
+            </h1>
+        </div>
     </body>
 </html>

@@ -73,10 +73,8 @@ class SessionController extends Controller
      */
     public function destroy(string $id)
     {
-        Session::forget('key'); // Replace 'key' with the actual session key you want to remove
+        auth()->logout();
 
-        // Or using the request instance
-        request()->session()->forget('key'); // Replace 'key' with the actual session key you want to remove
-
+        return redirect('/')->with('success', 'Goodbye!');
     }
 }
