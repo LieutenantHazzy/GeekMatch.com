@@ -1,5 +1,6 @@
 <!doctype html>
 
+
 <title>Laravel From Scratch Blog</title>
 <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -22,13 +23,15 @@
     }
 </style>
 
+
 <body style="font-family: Open Sans, sans-serif">
 
 <section class="px-6 py-8">
     <nav class="md:flex md:justify-between md:items-center">
         <div>
-            <a href="/">
-                <img src="" alt="Logo" width="65px" height="auto">
+
+            <a href="#">
+                <img src="{{ asset('storage/'.$logo->logo) }}" alt="Logo" width="65px" height="auto">
             </a>
         </div>
 

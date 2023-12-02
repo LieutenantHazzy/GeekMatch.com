@@ -19,7 +19,7 @@ use App\Http\Controllers\SessionController;
 */
 
 Route::get('/', function () {
-//    $logo = Logo::where('active', 1)->first();
+    $logo = Logo::where('active', 1)->first();
     $sentences = Homepage_line::all();
 //    $sentences = [
 //        'Looking good today, '. Auth::user()->first_name,
@@ -43,11 +43,12 @@ Route::get('/', function () {
 
     $random = rand(0, count($sentences) - 1);
     $line = $sentences[$random];
-    return view('welcome', compact( 'line'));
+    return view('welcome', compact( 'line', 'logo'));
 });
 
 Route::get('login', [SessionController::class, 'index'])->middleware('guest');
 Route::post('login', [SessionController::class, 'store'])->middleware('guest');
+Route::get('register', [SessionController::class, 'show'])->middleware('guest');
 
 Route::post('logout', [SessionController::class, 'destroy'])->middleware('auth');
 

@@ -17,13 +17,17 @@
         </style>
     </head>
     <body class="antialiased">
-    <x-layout></x-layout>
-        <div class="pt-6 font-momo text-center" >
-            <h1>
-                <b>
-                    {{ $line->content}}
-                </b>
-            </h1>
+    <x-layout :logo="$logo"></x-layout>
+    <div class="bg-pink-200 py-16 text-red-700">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl font-serif mb-4">{{ $line->content }}</h1>
+            <p class="text-lg mb-8">Start here by making a account</p>
+            <a href="#explore" class="bg-red-500 hover:bg-red-600 text-white py-2 px-6 rounded-full text-lg">
+                Explore Love
+            </a>
+        </div>
+    </div>
+
         </div>
     </body>
 </html>

@@ -23,7 +23,6 @@ class DatabaseSeeder extends Seeder
              'first_name' => 'Admin',
              'Last_name' => 'Admin',
              'dob' => '2004-01-10',
-
          ]);
     }
 }
