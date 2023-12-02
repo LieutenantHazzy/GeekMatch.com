@@ -16,12 +16,12 @@ class DatabaseSeeder extends Seeder
 
          \App\Models\User::factory()->create([
              'one_time' => 'NULL',
-             'name' => 'Lieutenant',
-             'email' => '40julian02@gmail.com',
+             'name' => 'Admin',
+             'email' => 'admin.com',
              'password' => '2',
              'is_admin' => '1',
-             'first_name' => 'Julian',
-             'Last_name' => 'Peters',
+             'first_name' => 'Admin',
+             'Last_name' => 'Admin',
              'dob' => '2004-01-10',
 
          ]);
