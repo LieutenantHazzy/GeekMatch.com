@@ -49,6 +49,7 @@ Route::get('/', function () {
 Route::get('login', [SessionController::class, 'index'])->middleware('guest');
 Route::post('login', [SessionController::class, 'store'])->middleware('guest');
 Route::get('register', [SessionController::class, 'show'])->middleware('guest');
+Route::post('register', [SessionController::class, 'register'])->middleware('guest');
 
 Route::post('logout', [SessionController::class, 'destroy'])->middleware('auth');
 
